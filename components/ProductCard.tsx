@@ -65,14 +65,25 @@ export default function ProductCard({ product }: ProductCardProps) {
               )}
             </div>
 
-            {/* Quick View Button on Hover - Top Right */}
-            <div className="absolute top-4 right-4 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 z-20">
+            {/* Quick View Button on Hover - Top Right with Sliding Animation */}
+            <div className="absolute top-4 right-4 translate-x-4 opacity-0 group-hover/image:translate-x-0 group-hover/image:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] z-20 hidden md:block">
               <button
                 onClick={openQuickView}
-                className="w-8 h-8 bg-white  flex items-center justify-center text-black shadow-md hover:bg-black hover:text-white transition-all duration-300"
+                className="w-10 h-10 bg-white flex items-center justify-center text-black shadow-sm hover:bg-black hover:text-white transition-all duration-300 border border-neutral-100 "
                 title="Quick View"
               >
-                <Eye size={15} />
+                <Eye size={18} />
+              </button>
+            </div>
+
+            {/* Mobile Quick View Button - Always visible or positioned differently for touch */}
+            <div className="absolute bottom-4 right-4 md:hidden z-20">
+              <button
+                onClick={openQuickView}
+                className="w-9 h-9 bg-white/90 backdrop-blur-sm flex items-center justify-center text-black shadow-md border border-neutral-200 rounded-full"
+                title="Quick View"
+              >
+                <Eye size={16} />
               </button>
             </div>
           </div>

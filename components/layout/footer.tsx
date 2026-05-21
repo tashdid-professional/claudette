@@ -14,7 +14,7 @@ export default function Footer() {
         {/* About */}
         <div className="space-y-6">
           <h3 className="text-[13px] font-bold tracking-wider text-black">{footerData.about.title}</h3>
-          <p className="text-[14px] text-black/70 leading-relaxed">
+          <p className="text-[14px] leading-relaxed">
             {footerData.about.description}
           </p>
         </div>
@@ -27,7 +27,7 @@ export default function Footer() {
               <div key={idx} className="space-y-2">
                 <p className="text-[14px] text-black font-medium">{section.subtitle}</p>
                 {section.items.map((item) => (
-                  <p key={item} className="text-[14px] text-black/70">{item}</p>
+                  <p key={item} className="text-[14px] ">{item}</p>
                 ))}
               </div>
             ))}
@@ -42,7 +42,7 @@ export default function Footer() {
               <li key={category}>
                 <Link 
                   href={`/shop?category=${encodeURIComponent(category)}`} 
-                  className="text-[14px] text-black/70 hover:text-black transition-colors"
+                  className="text-[14px] hover:text-black transition-colors"
                 >
                   {category}
                 </Link>
@@ -57,7 +57,7 @@ export default function Footer() {
           <ul className="space-y-3">
             {footerData.support.links.map((link) => (
               <li key={link.label}>
-                <Link href={link.href} className="text-[14px] text-black/70 hover:text-black transition-colors">
+                <Link href={link.href} className="text-[14px] hover:text-black transition-colors">
                   {link.label}
                 </Link>
               </li>
@@ -68,7 +68,7 @@ export default function Footer() {
         {/* Subscribe */}
         <div className="space-y-6">
           <h3 className="text-[13px] font-bold tracking-wider text-black">{footerData.newsletter.title}</h3>
-          <p className="text-[14px] text-black/70 leading-relaxed max-w-60">
+          <p className="text-[14px] leading-relaxed max-w-60">
             {footerData.newsletter.description}
           </p>
           <div className="relative pt-4 group">
@@ -86,7 +86,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="pt-10 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="text-[13px] text-black/60 text-center md:text-left">
+        <div className="text-[13px] text-center md:text-left">
           © Claudette  {new Date().getFullYear()} - Powered by <a href="https://thebigdogdigital.com/" target="_blank" rel="noopener noreferrer" className="font-semibold text-black hover:underline">BigDog Digital</a>.
         </div>
         

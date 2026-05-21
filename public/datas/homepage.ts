@@ -65,3 +65,12 @@ export const bannerData = {
   image: "https://images.pexels.com/photos/6621453/pexels-photo-6621453.jpeg?auto=compress&cs=tinysrgb&w=1600"
 };
 
+export const brandStoryData = {
+  subtitle: "BOTANICAL SKINCARE",
+  title: "Skincare made with the world finest",
+  description: "Balance, purify, and heal your skin with Monastery. Ingredients of the highest quality.",
+  buttonText: "SHOP NOW",
+  buttonLink: "#",
+  image: "https://images.pexels.com/photos/6621453/pexels-photo-6621453.jpeg?auto=compress&cs=tinysrgb&w=1600"
+};
+

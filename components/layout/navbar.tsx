@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <header className="w-full ">
       {/* Top Bar */}
-      <div className="bg-[#F9F2ED] py-2 px-4 md:px-10 flex justify-center items-center text-[13px] font-serif border-b border-black/5 ">
+      <div className="hidden md:flex bg-[#F9F2ED] py-2 px-4 md:px-10 justify-center items-center text-[13px] font-serif border-b border-black/5 ">
         <div >Powder Foundation 20% Discount</div>
       </div>
 
