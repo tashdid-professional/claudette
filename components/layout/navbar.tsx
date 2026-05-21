@@ -64,10 +64,10 @@ export default function Navbar() {
 
         {/* Middle: Desktop Navigation */}
         <div className="hidden lg:flex flex-2 justify-center items-center gap-14 text-[14px] font-sans  ">
-          <Link href="/" className="hover:text-black/60 transition-colors">Home</Link>
-          <Link href="/about" className="hover:text-black/60 transition-colors">About Us</Link>
-          <Link href="/shop" className="hover:text-black/60 transition-colors">Shop</Link>
-          <Link href="/contact" className="hover:text-black/60 transition-colors">Contact Us</Link>
+          <Link href="/" className="hover:text-[#ef4626] transition-colors">Home</Link>
+          <Link href="/about" className="hover:text-[#ef4626] transition-colors">About Us</Link>
+          <Link href="/shop" className="hover:text-[#ef4626] transition-colors">Shop</Link>
+          <Link href="/contact" className="hover:text-[#ef4626] transition-colors">Contact Us</Link>
         </div>
 
         {/* Right: Actions */}
