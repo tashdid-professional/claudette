@@ -102,7 +102,7 @@ export default function ProductDetailsPage() {
           </div>
 
           {/* Right: Product Info */}
-          <div className="flex flex-col justify-center max-w-lg">
+          <div className="flex flex-col justify-start max-w-lg">
             <h1 className="text-3xl md:text-4xl tracking-normal text-black mb-6 font-serif">
               {product.name}
             </h1>
