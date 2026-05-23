@@ -9,8 +9,9 @@ export default function Footer() {
   const categories = Array.from(new Set(products.map(p => p.category)));
 
   return (
-    <footer className="w-full bg-[#fdfaf7] pt-20 pb-10 px-10 lg:px-32 border-t border-black/5 font-sans">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-24">
+    <footer className="w-full bg-[#fdfaf7] pt-20 pb-10  border-t border-black/5 font-sans">
+      <div className="container">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-24 ">
         {/* About */}
         <div className="space-y-6">
           <h3 className="text-[13px] font-bold tracking-wider text-black">{footerData.about.title}</h3>
@@ -82,8 +83,9 @@ export default function Footer() {
             </button>
           </div>
         </div>
+        
       </div>
-
+      
       {/* Bottom Bar */}
       <div className="pt-10 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-[13px] text-center md:text-left">
@@ -104,6 +106,8 @@ export default function Footer() {
           ))}
         </div>
       </div>
+      </div>
+
     </footer>
   );
 }

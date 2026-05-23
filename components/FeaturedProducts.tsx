@@ -56,9 +56,10 @@ export default function FeaturedProducts() {
   };
 
   return (
-    <section id="featured-products" className="container mx-auto w-full py-16 md:py-24 bg-white px-10 lg:px-16 relative font-sans">
+    <section id="featured-products" className="py-16 md:py-24 bg-white  relative font-sans container">
       {/* Section Header */}
-      <div className="flex justify-between items-center mb-8 px-4">
+      <div className ="">
+      <div className="flex justify-between items-center mb-8  ">
         <h2 className="text-xl md:text-[16px] font-medium text-[16px] text-black tracking-tight">
           Best Seller Products
         </h2>
@@ -71,9 +72,9 @@ export default function FeaturedProducts() {
       </div>
 
       {/* Products Slider Container */}
-      <div className="relative group px-1">
+      <div className="relative group">
         <div className="relative">
-          <div className="overflow-hidden">
+          <div className="overflow-hidden mx-[-12px]"> {/* Added negative margin to match px-3 */}
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{
@@ -87,6 +88,7 @@ export default function FeaturedProducts() {
               ))}
             </div>
           </div>
+        </div>
 
           {/* Carousel Arrows */}
           <button

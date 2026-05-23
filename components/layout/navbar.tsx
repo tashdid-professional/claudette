@@ -35,7 +35,7 @@ export default function Navbar() {
 
       {/* Main Navbar */}
       <nav className={cn( 
-        "container mx-auto w-full px-10 lg:px-20 py-10 flex items-center justify-between transition-all duration-300 bg-white z-50",
+        "container  w-full  py-10 flex items-center justify-between transition-all duration-300 bg-white z-50",
         scrolled && "py-3 shadow-sm sticky top-0"
       )}>
         {/* Left: Menu & Logo */}

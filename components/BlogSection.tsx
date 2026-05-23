@@ -9,7 +9,7 @@ export default function BlogSection() {
   const featuredBlogs = blogs.slice(0, 3);
 
   return (
-    <section className="container mx-auto w-full px-6 md:px-10 lg:px-16 py-16 md:py-24 bg-white font-sans">
+    <section className="container mx-auto w-full  py-16 md:py-24 bg-white font-sans">
       <div className="mx-auto">
         {/* Header - Matching FeaturedProducts design */}
         <div className="flex justify-between items-center mb-8 ">

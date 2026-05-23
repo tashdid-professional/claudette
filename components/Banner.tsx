@@ -4,8 +4,8 @@ import { bannerData } from "@/public/datas/homepage";
 
 export default function Banner() {
   return (
-    <section className="bg-white px-6 md:px-10 lg:px-16 pb-12 w-full">
-      <div className="relative w-full h-[500px] md:h-[570px] overflow-hidden rounded-sm">
+    <section className="bg-white lg:px-15 px-5 pb-12 w-full">
+      <div className="relative w-full h-[400px] md:h-[570px] overflow-hidden ">
         {/* Background Image */}
         <Image
           src={bannerData.image}
@@ -19,7 +19,7 @@ export default function Banner() {
         <div className="absolute inset-0 bg-black/5" />
 
         {/* Content Container */}
-        <div className="container mx-auto relative h-full px-4 md:px-8 lg:px-20 flex flex-col justify-center">
+        <div className="container  relative h-full  flex flex-col justify-center">
           <div className="max-w-2xl text-white">
             <p className="text-[10px] md:text-[10px] font-semibold tracking-[0.25em] uppercase mb-4 opacity-90">
               {bannerData.subtitle}

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronRight, LayoutGrid, List, ChevronDown, Plus, ChevronLeft } from "lucide-react";
 import { products } from "@/public/datas/products";
 import ProductCard from "@/components/ProductCard";
+import { shopHeader } from "@/public/datas/homepage";
 
 export default function ShopPage() {
   const [viewType, setViewType] = useState<"grid" | "list">("grid");
@@ -68,8 +69,8 @@ export default function ShopPage() {
           {/* Background Overlay */}
           <div className="absolute inset-0 z-0">
             <Image 
-              src="https://images.pexels.com/photos/3762882/pexels-photo-3762882.jpeg" // High quality beauty banner
-              alt="Shop Banner"
+              src={shopHeader.image} 
+              alt={shopHeader.title}
               fill
               className="object-cover"
               priority
@@ -81,23 +82,23 @@ export default function ShopPage() {
             <nav className="flex justify-center items-center gap-2 text-[12px] uppercase tracking-widest text-white/80 mb-6 font-medium">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span className="text-white/40">/</span>
-              <span>Shop</span>
+              <span>{shopHeader.breadcrumb}</span>
             </nav>
             
             <h1 className="text-5xl md:text-[100px] font-serif mb-8 leading-none">
-              Shop
+              {shopHeader.title}
             </h1>
             
             <p className="text-[14px] md:text-[15px] leading-relaxed max-w-3xl mx-auto text-white/90">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+              {shopHeader.description}
             </p>
           </div>
         </div>
       </section>
 
       {/* Main Content Area */}
-      <section className="py-20 px-6 md:px-10 lg:px-16 lg:py-24">
-        <div className="container mx-auto flex flex-col lg:flex-row gap-12">
+      <section className="py-20 container lg:py-24">
+        <div className=" mx-auto flex flex-col lg:flex-row gap-12">
           
           {/* Sidebar - Product Categories Only */}
           <aside className="w-full lg:w-1/4 space-y-12">

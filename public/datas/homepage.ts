@@ -51,8 +51,9 @@ export const footerData = {
 };
 
 export const shopHeader = {
-  title: "SHOP",
-  image: "https://images.pexels.com/photos/3373739/pexels-photo-3373739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  title: "Shop",
+  description: "Explore our collection of botanical skincare, crafted with the world's finest plant oils and absolutes to purify, balance, and heal your skin naturally.",
+  image: "https://images.pexels.com/photos/3762882/pexels-photo-3762882.jpeg", // High quality beauty banner
   breadcrumb: "Shop"
 };
 
@@ -72,5 +73,20 @@ export const brandStoryData = {
   buttonText: "SHOP NOW",
   buttonLink: "#",
   image: "https://images.pexels.com/photos/6621453/pexels-photo-6621453.jpeg?auto=compress&cs=tinysrgb&w=1600"
+};
+
+export const contactPageData = {
+  hero: {
+    title: "Contact Us",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
+  },
+  form: {
+    title: "Contact Us for Claudette",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  sidebar: {
+    email: "hello@example.com",
+    fax: "+(888) 456-7890"
+  }
 };
 

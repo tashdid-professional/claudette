@@ -54,7 +54,7 @@ export default function ProductDetailsPage() {
 
      
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 py-16 md:py-20">
+      <div className="container py-16 md:py-20">
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-2 mb-10 md:mb-14 text-[11px] md:text-xs tracking-[0.1em] uppercase font-medium">
           <Link href="/" className="text-black hover:text-[#d4b1a4] transition-colors">Home</Link>
@@ -69,7 +69,15 @@ export default function ProductDetailsPage() {
           {/* Left: Image Gallery */}
           <div className="flex flex-col gap-6">
             {/* Main Image */}
-            <div className="relative aspect-[3/4] bg-[#fcf9f9]">
+            <div className="relative aspect-[3/4] bg-[#F9F2ED]">
+              {product.oldPrice && (
+                <div className="absolute top-4 left-4 w-12 h-12 bg-black rounded-full flex items-center justify-center z-20">
+                  <span className="text-white text-xs md:text-[13px] font-bold">
+                    {Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}%
+                  </span>
+                </div>
+              )}
+              
               <Image src={mainImage} alt={product.name} fill className="object-cover" priority />
               {product.badge && (
                 <span className="absolute top-0 right-0 bg-[#fde9e4] px-6 md:px-8 py-2 text-[10px] md:text-xs font-serif italic tracking-[0.08em] z-10">

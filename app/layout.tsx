@@ -32,6 +32,10 @@ export default function RootLayout({
       lang="en"
       className={`${dmSans.variable} ${crimsonText.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="icon" href="/favicon-circle.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon-circle.png" />
+      </head>
       <body className="font-sans min-h-full flex flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>

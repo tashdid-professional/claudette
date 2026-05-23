@@ -4,10 +4,10 @@ import { brandStoryData } from "@/public/datas/homepage";
 
 export default function BrandStory() {
   return (
-    <section className="w-full px-6 md:px-10 lg:px-16 py-12 overflow-hidden">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[600px] lg:min-h-[700px] rounded-sm overflow-hidden">
+    <section className="container  w-full  py-12 overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[600px] lg:min-h-[700px] overflow-hidden">
         {/* Left Side - Image */}
-        <div className="relative w-full h-[500px] md:h-auto">
+        <div className="relative w-full h-[350px]  md:h-auto">
           <Image
             src={brandStoryData.image}
             alt={brandStoryData.title}
@@ -19,11 +19,11 @@ export default function BrandStory() {
         {/* Right Side - Content */}
         <div className="flex items-center justify-center bg-[#F9F5F2] px-6 py-16 md:px-12 lg:px-16">
           <div className="max-w-lg text-center flex flex-col items-center">
-            <span className="text-[10px] md:text-[10px] font-sans font-semibold tracking-[0.3em] uppercase mb-7 ">
+            <span className="text-[10px] md:text-[10px] font-sans font-semibold tracking-[0.3em] uppercase lg:mb-7 mb-5 ">
               {brandStoryData.subtitle}
             </span>
             
-            <h1 className="text-4xl md:text-5xl lg:text-[54px] font-serif leading-[1.2] mb-10 0 max-w-sm md:max-w-md">
+            <h1 className="text-4xl md:text-5xl lg:text-[54px] font-serif leading-[1.2] lg:mb-10 mb-5 0 max-w-sm md:max-w-md">
               {brandStoryData.title}
             </h1>
             
