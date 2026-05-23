@@ -5,7 +5,7 @@ import { bannerData } from "@/public/datas/homepage";
 export default function Banner() {
   return (
     <section className="bg-white lg:px-15 px-5 pb-12 w-full">
-      <div className="relative w-full h-[400px] md:h-[570px] overflow-hidden ">
+      <div className="relative w-full h-[450px] md:h-[570px] overflow-hidden ">
         {/* Background Image */}
         <Image
           src={bannerData.image}
