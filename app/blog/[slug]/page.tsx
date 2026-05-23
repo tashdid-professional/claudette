@@ -27,9 +27,9 @@ export default function BlogDetailsPage() {
   return (
     <main className="bg-white min-h-screen font-sans">
     
-
+      <hr className="text-gray-300"></hr>
       {/* Content Section */}
-      <section className="py-16 md:py-20 container">
+      <section className="pb-16 md:pb-20 container pt-10">
         <div className=" flex flex-col lg:flex-row gap-16">
           
           {/* Sidebar - Desktop Left, Mobile Bottom */}

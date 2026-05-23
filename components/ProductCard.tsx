@@ -51,8 +51,8 @@ export default function ProductCard({ product }: ProductCardProps) {
                 src={product.image}
                 alt={product.name}
                 fill
-                className={`object-cover transition-opacity duration-700 ${
-                  product.gallery?.[1] ? "group-hover/image:opacity-0" : "group-hover/image:scale-105"
+                className={`object-cover transition-all duration-1000 ease-in-out ${
+                  product.gallery?.[1] ? "group-hover/image:opacity-0" : "group-hover/image:scale-110"
                 }`}
               />
               {product.gallery?.[1] && (
@@ -60,7 +60,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                   src={product.gallery[1]}
                   alt={`${product.name} alternate view`}
                   fill
-                  className="object-cover opacity-0 group-hover/image:opacity-100 transition-opacity duration-700"
+                  className="object-cover opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 ease-in-out"
                 />
               )}
             </div>

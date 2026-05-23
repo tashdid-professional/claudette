@@ -53,8 +53,9 @@ export default function ProductDetailsPage() {
      
 
      
+        <hr className="text-gray-300"></hr>
 
-      <div className="container py-16 md:py-20">
+      <div className="container pb-16 md:pb-20 pt-10">
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-2 mb-10 md:mb-14 text-[11px] md:text-xs tracking-[0.1em] uppercase font-medium">
           <Link href="/" className="text-black hover:text-[#d4b1a4] transition-colors">Home</Link>

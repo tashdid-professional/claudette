@@ -7,18 +7,27 @@ import { ChevronRight, LayoutGrid, List, ChevronDown, Plus, ChevronLeft } from "
 import { products } from "@/public/datas/products";
 import ProductCard from "@/components/ProductCard";
 import { shopHeader } from "@/public/datas/homepage";
+import { useSearchParams } from "next/navigation";
 
 export default function ShopPage() {
+  const searchParams = useSearchParams();
+  const searchBarQuery = searchParams.get("search") || "";
+  
   const [viewType, setViewType] = useState<"grid" | "list">("grid");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [sortOrder, setSortOrder] = useState<string>("a-z");
   const productsPerPage = 9; // 3 rows * 3 columns on desktop
 
-  // Filter products by category
-  const filteredProducts = selectedCategory 
-    ? products.filter(p => p.category === selectedCategory)
-    : products;
+  // Filter products by search and category
+  const filteredProducts = products.filter(p => {
+    const matchesCategory = selectedCategory ? p.category === selectedCategory : true;
+    const matchesSearch = searchBarQuery 
+      ? p.name.toLowerCase().includes(searchBarQuery.toLowerCase()) || 
+        p.category.toLowerCase().includes(searchBarQuery.toLowerCase())
+      : true;
+    return matchesCategory && matchesSearch;
+  });
 
   // Apply Sorting
   const sortedProducts = [...filteredProducts].sort((a, b) => {
@@ -64,7 +73,7 @@ export default function ShopPage() {
   return (
     <main className="bg-white min-h-screen">
       {/* Dynamic Banner */}
-      <section className="px-6 md:px-10 lg:px-16 mt-6 md:mt-10">
+      <section className="px-6 md:px-10 lg:px-16 ">
         <div className="relative h-[75vh] min-h-100 flex items-center justify-center text-center px-6 overflow-hidden">
           {/* Background Overlay */}
           <div className="absolute inset-0 z-0">
@@ -97,8 +106,20 @@ export default function ShopPage() {
       </section>
 
       {/* Main Content Area */}
-      <section className="py-20 container lg:py-24">
-        <div className=" mx-auto flex flex-col lg:flex-row gap-12">
+      <section className="py-20 container lg:py-24">        {searchBarQuery && (
+          <div className="mb-10 p-6 bg-neutral-50 border border-neutral-100 flex items-center justify-between">
+            <p className="text-black text-[15px]">
+              Showing results for <span className="font-bold underline underline-offset-4 decoration-black/20">"{searchBarQuery}"</span>
+              <span className="text-neutral-400 ml-2">({filteredProducts.length} items found)</span>
+            </p>
+            <Link 
+              href="/shop" 
+              className="text-[12px] font-bold uppercase tracking-widest text-[#ef4626] hover:opacity-70 transition-opacity"
+            >
+              Clear Search
+            </Link>
+          </div>
+        )}        <div className=" mx-auto flex flex-col lg:flex-row gap-12">
           
           {/* Sidebar - Product Categories Only */}
           <aside className="w-full lg:w-1/4 space-y-12">

@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Search, User, ShoppingBag, Menu, X, ChevronDown } from "lucide-react";
+import { Search, User, ShoppingBag, Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { socialLinks } from "@/public/datas/homepage";
+import { products } from "@/public/datas/products";
+import { useRouter } from "next/navigation";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -17,6 +19,16 @@ export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isSearchOpen || isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isSearchOpen, isMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +37,23 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const filteredProducts = searchQuery.trim() !== ""
+    ? products.filter(p => 
+        p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        p.category.toLowerCase().includes(searchQuery.toLowerCase())
+      ).slice(0, 5)
+    : [];
+
+  const handleSearchSubmit = (e: React.FormEvent | React.KeyboardEvent) => {
+    if ('key' in e && e.key !== 'Enter') return;
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchOpen(false);
+      setSearchQuery("");
+    }
+  };
 
   return (
     <header className="w-full ">
@@ -101,14 +130,54 @@ export default function Navbar() {
                 autoFocus
                 type="text" 
                 placeholder="Search any Product" 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearchSubmit}
                 className="w-full text-4xl md:text-7xl text-center border-none outline-none font-serif placeholder:text-gray-200 bg-transparent text-black"
               />
               <div className="h-px w-full bg-black/10 mt-6 relative overflow-hidden">
                 <div className="absolute inset-0 bg-black translate-x-[-101%] group-focus-within:translate-x-0 transition-transform duration-500 ease-in-out" />
               </div>
-              <p className="mt-8 text-black/40 text-[13px] font-sans tracking-wide">
-                Please type the word you want to search and press enter.
-              </p>
+              
+              {/* Search Results Preview */}
+              <div className="mt-12 max-w-2xl mx-auto w-full">
+                {filteredProducts.length > 0 ? (
+                  <div className="grid grid-cols-1 gap-4">
+                    {filteredProducts.map((product) => (
+                      <Link 
+                        key={product.id}
+                        href={`/product/${product.slug}`}
+                        onClick={() => setIsSearchOpen(false)}
+                        className="flex items-center gap-6 p-4 hover:bg-neutral-50 transition-colors group/item border border-transparent hover:border-neutral-100"
+                      >
+                        <div className="relative w-16 h-16 bg-neutral-100 flex-shrink-0">
+                          <Image src={product.image} alt={product.name} fill className="object-cover" />
+                        </div>
+                        <div className="text-left flex-1">
+                          <h4 className="text-[14px] font-bold text-black uppercase tracking-wider">{product.name}</h4>
+                          <p className="text-[12px] text-neutral-400 mt-1 uppercase font-medium">{product.category}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[14px] font-bold text-black">${product.price.toFixed(2)}</p>
+                          <ArrowRight size={16} className="ml-auto mt-2 opacity-0 group-hover/item:opacity-100 transition-opacity" />
+                        </div>
+                      </Link>
+                    ))}
+                    <button 
+                      onClick={handleSearchSubmit}
+                      className="mt-6 py-4 px-10 bg-black text-white text-[12px] uppercase tracking-[0.2em] font-bold hover:bg-[#ef4626] transition-all flex items-center justify-center gap-3 mx-auto"
+                    >
+                      View All Results <ArrowRight size={16} />
+                    </button>
+                  </div>
+                ) : searchQuery.trim() !== "" ? (
+                  <p className="text-neutral-400 font-sans italic">No products found for "{searchQuery}"</p>
+                ) : (
+                  <p className="text-black/40 text-[13px] font-sans tracking-wide">
+                    Please type the word you want to search and press enter.
+                  </p>
+                )}
+              </div>
             </div>
           </motion.div>
         )}
@@ -150,10 +219,10 @@ export default function Navbar() {
 
               <div className="flex-1 overflow-y-auto font-sans  text-black font-normal">
                 <div className="divide-y divide-black/5">
-                  <MobileNavItem label="Home" href="/"  />
-                  <MobileNavItem label="Shop" href="/shop" />
-                  <MobileNavItem label="About Us" href="/about" />
-                  <MobileNavItem label="Contact Us" href="/contact" />
+                  <MobileNavItem label="Home" href="/" onClick={() => setIsMenuOpen(false)} />
+                  <MobileNavItem label="Shop" href="/shop" onClick={() => setIsMenuOpen(false)} />
+                  <MobileNavItem label="About Us" href="/about" onClick={() => setIsMenuOpen(false)} />
+                  <MobileNavItem label="Contact Us" href="/contact" onClick={() => setIsMenuOpen(false)} />
                 </div>
               </div>
 
@@ -188,10 +257,10 @@ export default function Navbar() {
   );
 }
 
-function MobileNavItem({ label, href, hasSubmenu }: { label: string; href: string; hasSubmenu?: boolean }) {
+function MobileNavItem({ label, href, hasSubmenu, onClick }: { label: string; href: string; hasSubmenu?: boolean; onClick?: () => void }) {
   return (
     <div className="flex items-center justify-between px-9 py-4 hover:bg-gray-50 transition-colors cursor-pointer group">
-      <Link href={href} className="flex-1 text-[14px] font-normal text-black">{label}</Link>
+      <Link href={href} onClick={onClick} className="flex-1 text-[14px] font-normal text-black">{label}</Link>
       {hasSubmenu && <ChevronDown size={16} className="text-gray-400 group-hover:text-black transition-colors" />}
     </div>
   );
