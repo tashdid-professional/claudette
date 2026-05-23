@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, LayoutGrid, List, ChevronDown, Plus, ChevronLeft } from "lucide-react";
@@ -9,7 +9,7 @@ import ProductCard from "@/components/ProductCard";
 import { shopHeader } from "@/public/datas/homepage";
 import { useSearchParams } from "next/navigation";
 
-export default function ShopPage() {
+function ShopContent() {
   const searchParams = useSearchParams();
   const searchBarQuery = searchParams.get("search") || "";
   
@@ -240,5 +240,17 @@ export default function ShopPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={
+      <div className="h-screen w-full flex items-center justify-center bg-white text-black font-serif text-2xl animate-pulse uppercase tracking-[0.2em]">
+        Loading Shop...
+      </div>
+    }>
+      <ShopContent />
+    </Suspense>
   );
 }
