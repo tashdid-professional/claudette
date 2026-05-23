@@ -25,7 +25,7 @@ export default function BlogSection() {
         </div>
 
         {/* Blogs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12 px-1">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12 ">
           {featuredBlogs.map((blog) => (
             <Link 
               key={blog.id} 
