@@ -74,7 +74,7 @@ function ShopContent() {
     <main className="bg-white min-h-screen">
       {/* Dynamic Banner */}
       <section className="px-6 md:px-10 lg:px-16 ">
-        <div className="relative h-[75vh] min-h-100 flex items-center justify-center text-center px-6 overflow-hidden">
+        <div className="relative lg:h-[75vh] min-h-100 flex items-center justify-center text-center px-6 overflow-hidden">
           {/* Background Overlay */}
           <div className="absolute inset-0 z-0">
             <Image 
