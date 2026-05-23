@@ -29,28 +29,28 @@ export const products: Product[] = [
     category: "Lip Gloss",
     price: 23.0,
     oldPrice: 27.0,
-    image: "/Images/products/1.jpg",
+    image: "/images/products/1.jpg",
     badge: "Sale",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut. Eu agam malorum nec. Eu has vide putent, dico option nominati no eam. Ea erant impetus consequuntur eos, velit congue vidisse eos ne.",
     slug: "film-eyeshadow",
     tags: ["Cosmetic", "Make Up"],
-    gallery: ["/Images/products/1.jpg", "/Images/products/2.jpg", "/Images/products/3.jpg"],
+    gallery: ["/images/products/1.jpg", "/images/products/2.jpg", "/images/products/3.jpg"],
     variantType: "Colors",
     variants: [
       {
         name: "Classic Pink",
-        image: "/Images/products/1.jpg",
-        gallery: ["/Images/products/1.jpg", "/Images/products/2.jpg", "/Images/products/3.jpg"]
+        image: "/images/products/1.jpg",
+        gallery: ["/images/products/1.jpg", "/images/products/2.jpg", "/images/products/3.jpg"]
       },
       {
         name: "Velvet Red",
-        image: "/Images/products/4.jpeg",
-        gallery: ["/Images/products/4.jpeg", "/Images/products/5.jpeg"]
+        image: "/images/products/4.jpeg",
+        gallery: ["/images/products/4.jpeg", "/images/products/5.jpeg"]
       },
       {
         name: "Deep Ocean",
         image: "https://images.pexels.com/photos/2533266/pexels-photo-2533266.jpeg",
-        gallery: ["https://images.pexels.com/photos/2533266/pexels-photo-2533266.jpeg", "/Images/products/2.jpg"]
+        gallery: ["https://images.pexels.com/photos/2533266/pexels-photo-2533266.jpeg", "/images/products/2.jpg"]
       }
     ],
     videos: ["vP9X2V9c3Uw", "6H85SjZ6BIA"],
@@ -61,11 +61,11 @@ export const products: Product[] = [
     name: "WILD PALETTES",
     category: "Lip Gloss",
     price: 25.0,
-    image: "/Images/products/2.jpg",
+    image: "/images/products/2.jpg",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut. Eu agam malorum nec. Eu has vide putent, dico option nominati no eam.",
     slug: "wild-palettes",
     tags: ["Cosmetic", "Palettes"],
-    gallery: ["/Images/products/2.jpg", "/Images/products/4.jpeg"],
+    gallery: ["/images/products/2.jpg", "/images/products/4.jpeg"],
     videos: ["vP9X2V9c3Uw"],
     purchaseLink: "#"
   },
@@ -74,11 +74,11 @@ export const products: Product[] = [
     name: "ROSE SAFARI",
     category: "Lip Gloss",
     price: 35.0,
-    image: "/Images/products/3.jpg",
+    image: "/images/products/3.jpg",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut. Eu agam malorum nec.",
     slug: "rose-safari",
     tags: ["Classic", "Lipstick"],
-    gallery: ["/Images/products/3.jpg"],
+    gallery: ["/images/products/3.jpg"],
     videos: ["vP9X2V9c3Uw"],
     purchaseLink: "#"
   },
@@ -87,12 +87,12 @@ export const products: Product[] = [
     name: "SUMMER MIRAGE",
     category: "Lip Gloss",
     price: 32.0,
-    image: "/Images/products/4.jpeg",
+    image: "/images/products/4.jpeg",
     badge: "New",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut.",
     slug: "summer-mirage",
     tags: ["Summer", "Limited"],
-    gallery: ["/Images/products/4.jpeg"],
+    gallery: ["/images/products/4.jpeg"],
     videos: ["vP9X2V9c3Uw"],
     purchaseLink: "#"
   },
@@ -101,12 +101,12 @@ export const products: Product[] = [
     name: "SUMMER DRAMA",
     category: "Lip Gloss",
     price: 32.0,
-    image: "/Images/products/5.jpeg",
+    image: "/images/products/5.jpeg",
     badge: "New",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut.",
     slug: "summer-drama",
     tags: ["Drama", "Intense"],
-    gallery: ["/Images/products/5.jpeg"],
+    gallery: ["/images/products/5.jpeg"],
     videos: ["vP9X2V9c3Uw"],
     purchaseLink: "#"
   },
