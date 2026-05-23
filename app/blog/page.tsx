@@ -38,8 +38,8 @@ export default function BlogPage() {
       </section>
 
       {/* Content Section */}
-      <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16">
-        <div className="container mx-auto flex flex-col lg:flex-row gap-16">
+      <section className="py-16 md:py-24 container">
+        <div className=" flex flex-col lg:flex-row gap-16">
           
           {/* Sidebar - Desktop Left, Mobile Bottom */}
           <div className="w-full lg:w-1/4 order-2 lg:order-1 ">

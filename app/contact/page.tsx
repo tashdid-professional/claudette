@@ -27,7 +27,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-white">
       {/* Banner Section */}
       <section className="bg-[#fdf9f7] py-20 md:py-32 px-6">
-        <div className="container mx-auto text-center max-w-4xl">
+        <div className="container text-center max-w-4xl">
           <nav className="flex justify-center items-center gap-2 text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-[#a1a1a1] mb-8 font-medium">
             <Link href="/" className="hover:text-black transition-colors">Home</Link>
             <span>/</span>
@@ -45,8 +45,8 @@ export default function ContactPage() {
       </section>
 
       {/* Content Section */}
-      <section className="py-20 md:py-32 px-6 md:px-10 lg:px-16">
-        <div className="container mx-auto">
+      <section className="py-20 md:py-32 container">
+        <div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
             
             {/* Left Column: Form */}
@@ -129,8 +129,8 @@ export default function ContactPage() {
             </div>
 
             {/* Right Column: Info */}
-            <div className="order-1 lg:order-2 flex flex-col justify-start  ">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-10">
+            <div className="order-1 lg:order-2 flex flex-col  lg:pt-50 ">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 lg:gap-10 gap-4">
                 <div>
                   <span className="text-[15px] uppercase tracking-[0.1em] text-[#ccc] font-bold block mb-2">Email</span>
                   <a href={`mailto:${contactPageData.sidebar.email}`} className="text-[#000] font-bold  md:text-[15px] hover:text-[#ef4626] transition-colors break-words">

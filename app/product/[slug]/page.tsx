@@ -69,7 +69,7 @@ export default function ProductDetailsPage() {
           {/* Left: Image Gallery */}
           <div className="flex flex-col gap-6">
             {/* Main Image */}
-            <div className="relative aspect-[3/4] bg-[#F9F2ED]">
+            <div className="relative aspect-[3/4] w-full max-w-[450px] mx-auto md:mx-0 bg-[#F9F2ED] overflow-hidden">
               {product.oldPrice && (
                 <div className="absolute top-4 left-4 w-12 h-12 bg-black rounded-full flex items-center justify-center z-20">
                   <span className="text-white text-xs md:text-[13px] font-bold">
