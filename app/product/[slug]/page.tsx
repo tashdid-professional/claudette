@@ -70,7 +70,7 @@ export default function ProductDetailsPage() {
           {/* Left: Image Gallery */}
           <div className="flex flex-col gap-6">
             {/* Main Image */}
-            <div className="relative aspect-[3/4] w-full max-w-[450px] mx-auto md:mx-0 bg-[#F9F2ED] overflow-hidden">
+            <div className="relative aspect-[3/4] w-full max-w-[450px] mx-auto md:mx-0 bg-[#f9e2bf] overflow-hidden">
               {product.oldPrice && (
                 <div className="absolute top-4 left-4 w-12 h-12 bg-black rounded-full flex items-center justify-center z-20">
                   <span className="text-white text-xs md:text-[13px] font-bold">
@@ -81,7 +81,7 @@ export default function ProductDetailsPage() {
               
               <Image src={mainImage} alt={product.name} fill className="object-cover" priority />
               {product.badge && (
-                <span className="absolute top-0 right-0 bg-[#fde9e4] px-6 md:px-8 py-2 text-[10px] md:text-xs font-serif italic tracking-[0.08em] z-10">
+                <span className="absolute top-0 right-0 bg-[#f9e2bf] px-6 md:px-8 py-2 text-[10px] md:text-xs font-serif italic tracking-[0.08em] z-10">
                   {product.badge}
                 </span>
               )}
@@ -205,16 +205,17 @@ export default function ProductDetailsPage() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 animate-fadeIn">
                 {product.videos.map((vidId, idx) => (
-                  <div key={idx} className="relative aspect-video">
+                  <div key={idx} className="relative aspect-video rounded-sm overflow-hidden bg-neutral-100 ring-1 ring-black/5">
                     <iframe
                       width="100%"
                       height="100%"
-                      src={`https://www.youtube.com/embed/${vidId}`}
-                      title="Product Video"
+                      src={`https://www.youtube-nocookie.com/embed/${vidId}`}
+                      title={`Product Video ${idx + 1}`}
                       frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
-                      className="rounded-sm"
+                      className="w-full h-full"
+                      loading="lazy"
                     ></iframe>
                   </div>
                 ))}

@@ -21,7 +21,7 @@ export default function BlogPage() {
   return (
     <main className="bg-white min-h-screen font-sans">
       {/* Page Header */}
-      <section className="bg-[#FCF6F4] py-16 md:py-24 px-6 text-center">
+      <section className="bg-[#f9e2bf] py-16 md:py-24 px-6 text-center">
         <div className="container mx-auto max-w-4xl">
           <nav className="flex justify-center items-center gap-2 text-[12px] uppercase tracking-widest text-neutral-400 mb-6 font-medium">
             <Link href="/" className="hover:text-black transition-colors">Home</Link>

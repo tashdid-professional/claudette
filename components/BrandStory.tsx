@@ -17,7 +17,7 @@ export default function BrandStory() {
         </div>
 
         {/* Right Side - Content */}
-        <div className="flex items-center justify-center bg-[#F9F5F2] px-6 py-16 md:px-12 lg:px-16">
+        <div className="flex items-center justify-center bg-[#f9e2bf] px-6 py-16 md:px-12 lg:px-16">
           <div className="max-w-lg text-center flex flex-col items-center">
             <span className="text-[10px] md:text-[10px] font-sans font-semibold tracking-[0.3em] uppercase lg:mb-7 mb-5 ">
               {brandStoryData.subtitle}

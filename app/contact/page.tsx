@@ -26,7 +26,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Banner Section */}
-      <section className="bg-[#fdf9f7] py-20 md:py-32 px-6">
+      <section className="bg-[#f9e2bf] py-20 md:py-32 px-6">
         <div className="container text-center max-w-4xl">
           <nav className="flex justify-center items-center gap-2 text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-[#a1a1a1] mb-8 font-medium">
             <Link href="/" className="hover:text-black transition-colors">Home</Link>

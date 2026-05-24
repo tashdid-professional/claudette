@@ -9,7 +9,7 @@ export default function Footer() {
   const categories = Array.from(new Set(products.map(p => p.category)));
 
   return (
-    <footer className="w-full bg-[#fdfaf7] pt-20 pb-10  border-t border-black/5 font-sans">
+    <footer className="w-full bg-[#f9e2bf] pt-20 pb-10  border-t border-black/5 font-sans">
       <div className="container">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-24 ">
         {/* About */}

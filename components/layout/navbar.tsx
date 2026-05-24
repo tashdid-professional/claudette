@@ -45,9 +45,10 @@ export default function Navbar() {
       ).slice(0, 5)
     : [];
 
-  const handleSearchSubmit = (e: React.FormEvent | React.KeyboardEvent) => {
-    if ('key' in e && e.key !== 'Enter') return;
-    e.preventDefault();
+  const handleSearchSubmit = (e?: React.FormEvent | React.KeyboardEvent | React.MouseEvent) => {
+    if (e && 'key' in e && e.key !== 'Enter') return;
+    if (e) e.preventDefault();
+    
     if (searchQuery.trim()) {
       router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
       setIsSearchOpen(false);
@@ -56,16 +57,22 @@ export default function Navbar() {
   };
 
   return (
-    <header className="w-full ">
+    <header className={cn(
+      "w-full z-50 transition-all duration-300 bg-white",
+      scrolled ? "sticky top-0 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]" : "relative"
+    )}>
       {/* Top Bar */}
-      <div className="hidden md:flex bg-[#F9F2ED] py-2 px-4 md:px-10 justify-center items-center text-[13px] font-serif border-b border-black/5 ">
+      <div className={cn(
+        "hidden md:flex bg-[#f9e2bf] py-2 px-4 md:px-10 justify-center items-center text-[13px] font-serif border-b border-black/5 transition-all duration-300 overflow-hidden",
+        scrolled ? "h-0 py-0 border-none" : "h-auto"
+      )}>
         <div >Powder Foundation 20% Discount</div>
       </div>
 
       {/* Main Navbar */}
       <nav className={cn( 
-        "container  w-full  py-10 flex items-center justify-between transition-all duration-300 bg-white z-50",
-        scrolled && "py-3 shadow-sm sticky top-0"
+        "container w-full flex items-center justify-between transition-all duration-300",
+        scrolled ? "py-3" : "py-6 lg:py-10"
       )}>
         {/* Left: Menu & Logo */}
         <div className="flex-1 flex items-center gap-4">

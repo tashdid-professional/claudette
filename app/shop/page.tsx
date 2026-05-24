@@ -3,11 +3,12 @@
 import React, { useState, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, LayoutGrid, List, ChevronDown, Plus, ChevronLeft } from "lucide-react";
+import { ChevronRight, LayoutGrid, List, ChevronDown, Plus, ChevronLeft, X } from "lucide-react";
 import { products } from "@/public/datas/products";
 import ProductCard from "@/components/ProductCard";
 import { shopHeader } from "@/public/datas/homepage";
 import { useSearchParams } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -17,8 +18,8 @@ function ShopContent() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [sortOrder, setSortOrder] = useState<string>("a-z");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const productsPerPage = 9; // 3 rows * 3 columns on desktop
-
   // Filter products by search and category
   const filteredProducts = products.filter(p => {
     const matchesCategory = selectedCategory ? p.category === selectedCategory : true;
@@ -59,6 +60,7 @@ function ShopContent() {
   const handleCategorySelect = (category: string | null) => {
     setSelectedCategory(category);
     setCurrentPage(1); // Reset to first page when filtering
+    setIsSidebarOpen(false); // Close sidebar on mobile after selection
     window.scrollTo({ top: 400, behavior: "smooth" });
   };
   
@@ -119,11 +121,82 @@ function ShopContent() {
               Clear Search
             </Link>
           </div>
-        )}        <div className=" mx-auto flex flex-col lg:flex-row gap-12">
+        )}        
+
+        <div className=" mx-auto flex flex-col lg:flex-row gap-12 relative lg:static">
           
-          {/* Sidebar - Product Categories Only */}
-          <aside className="w-full lg:w-1/4 space-y-12">
-            <div>
+          {/* Mobile Sticky Toggle Button */}
+          <div className="lg:hidden fixed left-0 top-1/2 -translate-y-1/2 z-40">
+            <button 
+              onClick={() => setIsSidebarOpen(true)}
+              className="bg-black text-white py-6 px-2.5 rounded-r-lg shadow-2xl flex flex-col items-center gap-3 active:scale-95 transition-all group"
+            >
+              <List size={18} className="group-hover:scale-110 transition-transform" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] transform rotate-180 [writing-mode:vertical-lr]">
+                Categories
+              </span>
+            </button>
+          </div>
+
+          <AnimatePresence>
+            {isSidebarOpen && (
+              <>
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setIsSidebarOpen(false)}
+                  className="fixed inset-0 bg-black/40 z-[90] lg:hidden"
+                />
+                <motion.aside 
+                  initial={{ x: "-100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "-100%" }}
+                  transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                  className="fixed inset-y-0 left-0 w-[80%] max-w-[300px] bg-white z-[100] lg:hidden p-8 flex flex-col"
+                >
+                  <div className="flex justify-between items-center mb-10 pb-4 border-b border-neutral-100">
+                    <h4 className="text-[12px] font-semibold uppercase tracking-[0.1em]">
+                      Categories
+                    </h4>
+                    <button onClick={() => setIsSidebarOpen(false)} className="p-1 hover:rotate-90 transition-transform duration-300">
+                      <X size={20} />
+                    </button>
+                  </div>
+                  
+                  <ul className="space-y-6 overflow-y-auto">
+                    <li 
+                      onClick={() => handleCategorySelect(null)}
+                      className="flex items-center justify-between cursor-pointer"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`w-3.5 h-3.5 border transition-colors ${selectedCategory === null ? "bg-black border-black" : "border-neutral-300"}`} />
+                        <span className={`text-[13px] font-medium ${selectedCategory === null ? "text-black" : "text-neutral-600"}`}>All Products</span>
+                      </div>
+                      <span className="text-[12px] text-neutral-400">({products.length})</span>
+                    </li>
+                    {categories.map((cat) => (
+                      <li 
+                        key={cat.name} 
+                        onClick={() => handleCategorySelect(cat.name)}
+                        className="flex items-center justify-between cursor-pointer"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`w-3.5 h-3.5 border transition-colors ${selectedCategory === cat.name ? "bg-black border-black" : "border-neutral-300"}`} />
+                          <span className={`text-[13px] font-medium ${selectedCategory === cat.name ? "text-black" : "text-neutral-600"}`}>{cat.name}</span>
+                        </div>
+                        <span className="text-[12px] text-neutral-400">({cat.count})</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.aside>
+              </>
+            )}
+          </AnimatePresence>
+
+          {/* Sidebar - Desktop Only */}
+          <aside className="hidden lg:block lg:w-1/4 space-y-12">
+            <div className="sticky top-32">
               <h4 className="text-[12px] font-semibold uppercase tracking-[0.1em] mb-10 pb-4 border-b border-neutral-100">
                 Product Categories
               </h4>

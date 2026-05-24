@@ -53,7 +53,7 @@ export const products: Product[] = [
         gallery: ["https://images.pexels.com/photos/2533266/pexels-photo-2533266.jpeg", "/images/products/2.jpg"]
       }
     ],
-    videos: ["EngW7tLk6R8?si=ufXWF0avesvskflA", "a3ICNMQW7Ok?si=MbJhNG0M12E6-ADZ"],
+    videos: ["EngW7tLk6R8", "a3ICNMQW7Ok"],
     purchaseLink: "#"
   },
   {
