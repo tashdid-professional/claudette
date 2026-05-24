@@ -1,4 +1,4 @@
-# Backend Development Integration Guide - Cosmetsy
+# Backend Development Integration Guide - Claudette
 
 This project is currently a Next.js 15 (App Router) frontend using static TypeScript data files. To transition to a dynamic backend (PHP, Node.js, Python, etc.), follow this guide to set up the database, API, and admin panel.
 
@@ -98,6 +98,43 @@ The developer should update `handleSubmit` to:
 const handleSubmit = async (e) => {
   e.preventDefault();
   const response = await fetch('YOUR_BACKEND_URL/api/contact', {
+    method: 'POST',
+    body: JSON.stringify(formData)
+  });
+};
+```
+
+---
+
+## 5. Legal & Support Content (FAQ, Privacy, Terms)
+
+The Legal pages (Privacy Policy, Terms & Conditions) and the FAQ page are dynamic and should be manageable via an admin panel.
+
+### Table: `legal_pages`
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| `id` | INT (PK) | Unique Identifier |
+| `slug` | VARCHAR(50) | 'privacy', 'terms', 'faq' |
+| `title` | VARCHAR(255)| Page Title |
+
+### Table: `legal_sections`
+Used for Privacy and Terms pages which follow a Title/Content section structure.
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| `id` | INT (PK) | Unique Identifier |
+| `page_id` | INT (FK) | Reference to `legal_pages.id` |
+| `title` | VARCHAR(255)| Section Heading |
+| `content` | LONGTEXT | Section Body |
+| `sort_order` | INT | For ordering sections |
+
+### Table: `faq_items`
+Used specifically for the FAQ accordion.
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| `id` | INT (PK) | Unique Identifier |
+| `question` | TEXT | The Question |
+| `answer` | TEXT | The Answer |
+| `sort_order` | INT | For ordering questions |
     method: 'POST',
     body: JSON.stringify(formData),
     headers: { 'Content-Type': 'application/json' }
