@@ -13,11 +13,21 @@ import { motion, AnimatePresence } from "framer-motion";
 function ShopContent() {
   const searchParams = useSearchParams();
   const searchBarQuery = searchParams.get("search") || "";
+  const categoryParam = searchParams.get("category");
   
   const [viewType, setViewType] = useState<"grid" | "list">("grid");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(categoryParam);
   const [sortOrder, setSortOrder] = useState<string>("a-z");
+
+  // Sync state with URL parameter if it changes
+  React.useEffect(() => {
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+      setCurrentPage(1);
+    }
+  }, [categoryParam]);
+  
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const productsPerPage = 9; // 3 rows * 3 columns on desktop
   // Filter products by search and category

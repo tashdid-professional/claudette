@@ -32,9 +32,17 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      // Use a wider hysteresis so small layout shifts do not toggle the state
+      const threshold = 120;
+      const unstickThreshold = 0;
+
+      setScrolled(prev => {
+        if (!prev && window.scrollY > threshold) return true;
+        if (prev && window.scrollY <= unstickThreshold) return false;
+        return prev;
+      });
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -58,20 +66,20 @@ export default function Navbar() {
 
   return (
     <header className={cn(
-      "w-full z-50 transition-all duration-300 bg-white",
-      scrolled ? "sticky top-0 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]" : "relative"
+      "w-full z-50 bg-white sticky top-0",
+      scrolled ? "shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]" : "border-b-0"
     )}>
       {/* Top Bar */}
       <div className={cn(
-        "hidden md:flex bg-[#f9e2bf] py-2 px-4 md:px-10 justify-center items-center text-[13px] font-serif border-b border-black/5 transition-all duration-300 overflow-hidden",
-        scrolled ? "h-0 py-0 border-none" : "h-auto"
+        "hidden md:flex bg-[#f9e2bf] justify-center items-center text-[13px] font-serif transition-all duration-500 ease-in-out overflow-hidden",
+        scrolled ? "max-h-0 opacity-0" : "max-h-20 py-2 px-4 md:px-10"
       )}>
         <div >Powder Foundation 20% Discount</div>
       </div>
 
       {/* Main Navbar */}
       <nav className={cn( 
-        "container w-full flex items-center justify-between transition-all duration-300",
+        "container w-full flex items-center justify-between transition-all duration-500 ease-in-out",
         scrolled ? "py-3" : "py-6 lg:py-10"
       )}>
         {/* Left: Menu & Logo */}
