@@ -22,10 +22,8 @@ function ShopContent() {
 
   // Sync state with URL parameter if it changes
   React.useEffect(() => {
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
-      setCurrentPage(1);
-    }
+    setSelectedCategory(categoryParam);
+    setCurrentPage(1);
   }, [categoryParam]);
   
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
